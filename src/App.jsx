@@ -1,10 +1,13 @@
+import React from 'react'
 import Header from './Header'
 
 function App() {
+  const [itemCount, setItemCount] = React.useState(0)
+
   return (
-    <>
-      <Header></Header>
-    </>
+    <div>
+      <Header count={itemCount} />
+    </div>
   )
 }
 
