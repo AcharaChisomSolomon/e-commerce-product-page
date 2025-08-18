@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled"
 
+import CartDisplay from "./CartDisplay";
+
 import MobileMenu from "./MobileMenu";
 import WidthUtil from "./utils/WidthUtil";
 import UnstyledButton from "./utils/UnstyledButton";
@@ -9,10 +11,10 @@ import { QUERIES } from "./utils/constants";
 import Avatar from './images/image-avatar.png'
 import Logo from './images/logo.svg'
 import IconMenu from './images/icon-menu.svg'
-import IconCart from './images/icon-cart.svg'
 
-export default function Header({ count }) {
+export default function Header({ count, setItemCount }) {
   const [showMObileMenu, handleShowMobileMenu] = React.useState(false)
+  const [isCartOpen, setIsCartOpen] = React.useState(false)
 
   return (
     <header>
@@ -42,10 +44,12 @@ export default function Header({ count }) {
           </Navigator>
 
           <User>
-            <Cart>
-              <img src={IconCart} alt="" />
-              {count > 0 && <ItemCount>{count}</ItemCount>}
-            </Cart>
+            <CartDisplay 
+              count={count}
+              isOpen={isCartOpen}
+              onOpenChange={setIsCartOpen}
+              setItemCount={setItemCount}
+            />
             <Profile>
               <img src={Avatar} alt="" />
             </Profile>
@@ -75,6 +79,8 @@ const MainHeader = styled.div`
 
   @media ${QUERIES.laptopAndLarger} {
     padding-block: revert;
+    justify-content: revert;
+    gap: var(--spacing-0900);
   }
 `;
 
@@ -96,6 +102,7 @@ const Navigator = styled.nav`
   @media ${QUERIES.laptopAndLarger} {
     display: flex;
     align-items: center;
+    margin-right: auto;
   }
 `;
 
@@ -132,23 +139,6 @@ const User = styled.div`
   display: flex;
   gap: clamp(1.5rem, 20vw + -6rem, 3rem);
   align-items: center;
-`;
-
-const Cart = styled(UnstyledButton)`
-  position: relative;
-`;
-
-const ItemCount = styled.span`
-  font-size: calc(10 / 16 * 1rem);
-  font-weight: var(--fw-bold);
-  color: var(--white);
-  background-color: var(--orange-500);
-  padding: 2px var(--spacing-0100);
-  border-radius: 10px;
-
-  position: absolute;
-  top: -50%;
-  left: 50%;
 `;
 
 const Profile = styled.div`
