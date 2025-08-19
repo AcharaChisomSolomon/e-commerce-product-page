@@ -23,6 +23,7 @@ export default function CartDisplay({ count, setItemCount, isOpen, onOpenChange 
           </Cart>
         </Dialog.Trigger>
         <Dialog.Portal container={container}>
+          <DialogOverlay />
           <Content>
             <Header>
               <Title>Cart</Title>
@@ -78,7 +79,18 @@ const Root = styled.div`
   position: relative;
 `;
 
+const DialogOverlay = styled(Dialog.Overlay)`
+  /* position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+
+  @media ${QUERIES.laptopAndLarger} {
+    display: none;
+  } */
+`;
+
 const Content = styled(Dialog.Content)`
+z-index: 999;
   position: fixed;
   top: clamp(5.5rem, 6.154vw + 3.192rem, 7.5rem);
   right: 0;

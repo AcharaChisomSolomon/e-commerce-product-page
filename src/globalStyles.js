@@ -23,7 +23,7 @@ const GlobalStyles = css`
     /* COLORS */
     --white: hsl(0, 100%, 100%);
     --black: hsl(0, 0%, 0%);
-    --grey-950: hsl(220, 13%, 13%);
+    --grey-950: #1d2025ff;
     --grey-500: hsl(219, 9%, 45%);
     --grey-300: hsl(221, 22%, 81%);
     --grey-100: hsl(219, 35%, 92%);
