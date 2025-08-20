@@ -104,6 +104,7 @@ const Title = styled.h1`
 const Text = styled.p`
   font-size: var(--fs-16);
   color: var(--grey-500);
+  line-height: var(--lh-26);
 `;
 
 const Prices = styled.div`

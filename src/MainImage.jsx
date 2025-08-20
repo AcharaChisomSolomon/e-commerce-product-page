@@ -1,38 +1,13 @@
 import React from 'react'
 import styled from '@emotion/styled'
-
-import Image1 from './images/image-product-1.jpg'
-import Image1Thumbnail from './images/image-product-1-thumbnail.jpg'
-import Image2 from './images/image-product-2.jpg'
-import Image2Thumbnail from './images/image-product-2-thumbnail.jpg'
-import Image3 from './images/image-product-3.jpg'
-import Image3Thumbnail from './images/image-product-3-thumbnail.jpg'
-import Image4 from './images/image-product-4.jpg'
-import Image4Thumbnail from './images/image-product-4-thumbnail.jpg'
 import { QUERIES } from './utils/constants'
 import UnstyledButton from './utils/UnstyledButton'
-
-const IMAGES = {
-  1: {
-    large: Image1,
-    small: Image1Thumbnail
-  },
-  2: {
-    large: Image2,
-    small: Image2Thumbnail
-  },
-  3: {
-    large: Image3,
-    small: Image3Thumbnail
-  },
-  4: {
-    large: Image4,
-    small: Image4Thumbnail
-  },
-}
+import { IMAGES } from './utils/constants'
+import LightBox from './LightBox'
 
 export default function MainImage() {
   const [tag, setTag] = React.useState(1)
+  const [showLightBox, setShowLightBox] = React.useState(false)
 
   const handleSetPrevImg = () => {
     setTag(u => {
@@ -59,7 +34,7 @@ export default function MainImage() {
     <Wrapper>
       <MainImgContainer>
         <img className='small' src={IMAGES[tag]['large']} alt="" />
-        <UnstyledButton className='large'>
+        <UnstyledButton onClick={() => setShowLightBox(true)} className='large'>
           <img src={IMAGES[tag]['large']} alt="" />
         </UnstyledButton>
         <RightNavigator onClick={handleSetNextImg}>
@@ -83,6 +58,14 @@ export default function MainImage() {
           <img src={IMAGES[4]['small']} alt="" />
         </SubImage>
       </SubImages>
+      <LightBox 
+        isOpen={showLightBox}
+        onDismiss={() => setShowLightBox(false)}
+        tag={tag}
+        updateTag={updateTag}
+        handleSetNextImg={handleSetNextImg}
+        handleSetPrevImg={handleSetPrevImg}
+      />
     </Wrapper>
   )
 }
