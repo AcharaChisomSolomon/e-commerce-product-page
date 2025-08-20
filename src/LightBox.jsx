@@ -85,16 +85,30 @@ const DialogContent = styled(Dialog.Content)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 550px;
-    width: 90vw;
+    max-width: 606px;
+    max-height: 90vh; 
     z-index: 1000;
+    padding: 28px;
+    
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 `;
 
 const CloseButton = styled(UnstyledButton)`
-  position: absolute;
-  top: -40px;
-  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  margin-bottom: var(--spacing-0200);
   filter: brightness(0) invert(1);
   
   &:hover {
@@ -107,6 +121,7 @@ const MainImgContainer = styled.div`
   position: relative;
 
   img {
+    width: 100%;
     border-radius: 1rem;
   }
 `;

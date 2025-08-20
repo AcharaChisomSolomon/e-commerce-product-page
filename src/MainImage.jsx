@@ -158,8 +158,8 @@ const RightNavigator = styled(Navigator)`
 
 const SubImages = styled.div`
   display: none;
-  gap: var(--spacing-0400);
-  margin-block-start: var(--spacing-0400);
+  gap: var(--spacing-0200);
+  margin-block-start: var(--spacing-0200);
 
   @media ${QUERIES.laptopAndLarger} {
     display: flex;
